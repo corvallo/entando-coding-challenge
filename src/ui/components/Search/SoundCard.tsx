@@ -44,7 +44,7 @@ const SoundCard: FC<SounCardProps> = ({ sound }) => {
             {sound.name}
           </Text>
           <Text display={{ base: "none", md: "block" }} fontSize={{ base: "xs", lg: "sm" }}>
-            Rating: {sound.avg_rating}/5
+            Rating: {sound.avg_rating.toLocaleString("en-US", { maximumFractionDigits: 2, minimumFractionDigits: 2 })}/5.00
           </Text>
         </Flex>
         <Tags tags={sound.tags || []} />

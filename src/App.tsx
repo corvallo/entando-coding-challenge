@@ -1,5 +1,5 @@
 import { FC } from "react";
-import PlayerBox from "./ui/components/AudioPlayer/PlayerBox";
+import AudioPlayer from "./ui/components/AudioPlayer/AudioPlayer";
 import Content from "./ui/layouts/Content";
 import Header from "./ui/layouts/Header";
 import MainLayout from "./ui/layouts/MainLayout";
@@ -9,7 +9,7 @@ const App: FC = () => {
     <MainLayout>
       <Header />
       <Content />
-      <PlayerBox />
+      <AudioPlayer />
     </MainLayout>
   );
 };

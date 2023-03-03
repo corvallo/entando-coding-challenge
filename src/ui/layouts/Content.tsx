@@ -17,7 +17,7 @@ const Content: FC = () => {
         w={{ base: "90%", md: "80%", lg: "70%" }}
         m='0 auto'
         pos='relative'
-        maxH={{ base: "calc(100vh - 60px - 60px - 200px )", md: "calc(100vh - 60px - 60px - 180px )" }}
+        maxH={{ base: "calc(100vh - 60px - 60px - 290px )", md: "calc(100vh - 60px - 60px - 240px )" }}
         overflow='auto'
         justifyContent='center'
         zIndex={0}

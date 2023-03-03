@@ -4,7 +4,6 @@ export type TPlayerStatus = "pause" | "stop" | "play";
 
 export interface IPlayerStore {
   track: ISound | null;
-  playing: boolean;
   status: TPlayerStatus;
   setTrack: (track: ISound) => void;
   play: () => void;

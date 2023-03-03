@@ -1,5 +1,5 @@
-import { FC, memo, useCallback, useEffect, useState } from "react";
-import { Icon, Button, useColorModeValue } from "@chakra-ui/react";
+import { FC, memo, useCallback, useState } from "react";
+import { Icon, Button } from "@chakra-ui/react";
 import { GrPlayFill, GrPause } from "react-icons/gr";
 import usePlayerStore from "../../../store/playerStore";
 import { ISound } from "../../../@typings/sound";
@@ -18,7 +18,7 @@ const SoundPlayButton: FC<PlayButtonProps> = ({ sound }) => {
     if (s.track && s.track.id !== sound.id) {
       setIsPlaying(false);
     }
-    if (s.status === "stop") {
+    if (s.status === "stop" || s.status === "pause") {
       setIsPlaying(false);
     }
   });
@@ -26,7 +26,11 @@ const SoundPlayButton: FC<PlayButtonProps> = ({ sound }) => {
   const onClick = useCallback(() => {
     setTrack(sound);
     setIsPlaying(!isPlaying);
-    !isPlaying ? play() : pause();
+    if (!isPlaying) {
+      play();
+    } else {
+      pause();
+    }
   }, [isPlaying]);
 
   return (

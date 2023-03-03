@@ -6,10 +6,10 @@ export interface ISound {
   tags: string[];
   description: string;
   type: string;
-  geotag: string;
   previews: Record<string, string>;
   images: Record<string, string>;
   avg_rating: number;
+  duration: number;
 }
 
 export interface ISoundStore {

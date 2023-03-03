@@ -1,55 +1,33 @@
-import { FC, useEffect, useRef } from "react";
-
-import usePlayerStore from "../../../store/playerStore";
+import { Flex, useColorModeValue } from "@chakra-ui/react";
+import { FC } from "react";
+import AudioControls from "./AudioControls";
+import AudioTrack from "./AudioTrack";
+import AudioTrackInfo from "./AudioTrackInfo";
 
 const AudioPlayer: FC = () => {
-  const track = usePlayerStore((s) => s.track);
-  const status = usePlayerStore((s) => s.status);
-  const audioRef = useRef<HTMLAudioElement>();
-  const stop = usePlayerStore((s) => s.stop);
-
-  useEffect(() => {
-    if (!audioRef.current && track) {
-      audioRef.current = new Audio(track?.previews[Object.keys(track.previews)[0]]);
-      audioRef.current.play();
-      audioRef.current.onended = () => stop();
-    } else if (audioRef.current && track && status === "play") {
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0;
-      audioRef.current = new Audio(track?.previews[Object.keys(track.previews)[0]]);
-      audioRef.current.play();
-      audioRef.current.onended = () => stop();
-    }
-  }, [track, status]);
-
-  useEffect(() => {
-    if (audioRef.current) {
-      switch (status) {
-        case "play":
-          audioRef.current.play();
-          return;
-        case "pause":
-          audioRef.current.pause();
-          return;
-        case "stop":
-          audioRef.current.pause();
-          audioRef.current.currentTime = 0;
-          return;
-      }
-    }
-  }, [status, audioRef]);
-
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.pause();
-    }
-  }, [audioRef]);
-
   return (
-    <div>
-      &nbsp;&nbsp;
-      <button onClick={stop}>STOP</button>
-    </div>
+    <Flex
+      pos='absolute'
+      bottom='0'
+      bg={useColorModeValue("white", "gray.800")}
+      borderTopWidth='1px'
+      borderTopStyle='solid'
+      borderTopColor='blue.500'
+      h='150px'
+      w='100%'
+      zIndex='100'
+      px='10'
+      alignItems='center'
+      justifyContent='center'
+      gap={{ base: "10px", md: "30px" }}
+      direction={{ base: "column", md: "row" }}
+    >
+      <Flex direction='column' gap='5px'>
+        <AudioTrackInfo />
+        <AudioControls />
+      </Flex>
+      <AudioTrack />
+    </Flex>
   );
 };
 export default AudioPlayer;
