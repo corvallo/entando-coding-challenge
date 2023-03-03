@@ -1,7 +1,7 @@
 import { Flex } from "@chakra-ui/react";
 import { FC } from "react";
 
-const SearchResults: FC = () => {
+const TrackInfo: FC = () => {
   return <Flex></Flex>;
 };
-export default SearchResults;
+export default TrackInfo;
