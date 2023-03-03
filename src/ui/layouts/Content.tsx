@@ -9,10 +9,7 @@ const Content: FC = () => {
   const loading = useSoundsStore((s) => s.loading);
   const searchSounds = useSoundsStore((s) => s.searchSounds);
   useEffect(() => {
-    const defaults: ISearchRequestParams = {
-      fields: ["id", "name", "duration", "type", "previews", "images", "description", "tags", "avg_rating"],
-    };
-    searchSounds(defaults);
+    searchSounds();
   }, []);
   return (
     <Flex as='main' pos='relative' zIndex={0} gap='40px' direction='column'>

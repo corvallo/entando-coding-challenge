@@ -5,7 +5,7 @@ import search from "../api/search";
 const useSoundsStore = create<ISoundStore>((set, get) => ({
   loading: false,
   searchSoundsResults: null,
-  searchSounds: async (params) => {
+  searchSounds: async (params = {}) => {
     set((s) => ({ loading: true }));
     try {
       const searchResults = await search(params);

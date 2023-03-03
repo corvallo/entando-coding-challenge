@@ -1,8 +1,6 @@
-import { Button, Flex, Input, chakra } from "@chakra-ui/react";
-import { FC, useState } from "react";
-import { FiSearch } from "react-icons/fi";
-import { ISearchRequestParams } from "../../../@typings/search";
-import { useForm, FormProvider, useFormContext } from "react-hook-form";
+import { Flex, chakra } from "@chakra-ui/react";
+import { FC } from "react";
+import { useForm, FormProvider } from "react-hook-form";
 import useSoundsStore from "../../../store/soundsStore";
 import SearchInput from "./SearchInput";
 import SearchSubmit from "./SearchSubmit";
@@ -11,11 +9,7 @@ const SearchBar: FC = () => {
   const methods = useForm<{ query: string }>();
   const searchSounds = useSoundsStore((s) => s.searchSounds);
   const onSubmit = (data: { query: string }) => {
-    const defaults: ISearchRequestParams = {
-      fields: ["id", "name", "duration", "type", "previews", "images", "description", "tags", "avg_rating"],
-      query: data.query,
-    };
-    searchSounds(defaults);
+    searchSounds({ query: data.query });
   };
 
   return (

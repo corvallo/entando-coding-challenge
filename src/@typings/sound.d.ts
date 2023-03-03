@@ -21,5 +21,5 @@ export interface ISoundStore {
     next: string | null;
     results: ISound[];
   } | null;
-  searchSounds: (params: ISearchRequestParams) => void;
+  searchSounds: (params?: ISearchRequestParams) => void;
 }
