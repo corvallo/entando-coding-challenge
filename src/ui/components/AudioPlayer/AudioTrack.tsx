@@ -6,6 +6,7 @@ import AudioProgress from "./AudioProgress";
 const AudioTrack: FC = () => {
   const track = usePlayerStore((s) => s.track);
   const status = usePlayerStore((s) => s.status);
+  const loop = usePlayerStore((s) => s.loop);
   const stop = usePlayerStore((s) => s.stop);
   const audioRef = useRef<HTMLAudioElement>();
   const [progress, setProgress] = useState<number>(0);
@@ -24,13 +25,12 @@ const AudioTrack: FC = () => {
         audioRef.current!.pause();
         audioRef.current!.currentTime = 0;
       }
-
       audioRef.current = new Audio(track?.previews[Object.keys(track.previews)[0]]);
-
       audioRef.current.play();
       audioRef.current.onended = () => stop();
     }
   }, [track]);
+
   useEffect(() => {
     if (audioRef.current) {
       switch (status) {
@@ -42,6 +42,7 @@ const AudioTrack: FC = () => {
           audioRef.current.pause();
           clearInterval(intervalRef.current);
           return;
+
         case "stop":
           audioRef.current.pause();
           audioRef.current.currentTime = 0;
@@ -51,6 +52,12 @@ const AudioTrack: FC = () => {
       }
     }
   }, [status]);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.loop = loop;
+    }
+  }, [loop]);
 
   const onChangeProgess = useCallback(
     (v: number) => {

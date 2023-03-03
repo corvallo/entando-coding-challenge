@@ -5,6 +5,7 @@ import { IPlayerStore } from "../@typings/player";
 const usePlayerStore = create<IPlayerStore>((set, get) => ({
   track: null,
   status: "stop",
+  loop: false,
   play: () => {
     set({ status: "play" });
   },
@@ -12,6 +13,7 @@ const usePlayerStore = create<IPlayerStore>((set, get) => ({
     set({ status: "pause" });
   },
   stop: () => set({ status: "stop" }),
+  toggleLoop: () => set((s) => ({ loop: !s.loop })),
   setTrack: (track) => {
     const currentTrack = get().track;
 
