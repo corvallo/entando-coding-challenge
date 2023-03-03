@@ -1,5 +1,6 @@
 import { Flex, Spinner } from "@chakra-ui/react";
 import { FC, useEffect } from "react";
+import { ISearchRequestParams } from "../../@typings/search";
 import useSoundsStore from "../../store/soundsStore";
 import SearchBar from "../components/Search/SearchBar";
 import SearchResults from "../components/Search/SearchResults";
@@ -8,7 +9,10 @@ const Content: FC = () => {
   const loading = useSoundsStore((s) => s.loading);
   const searchSounds = useSoundsStore((s) => s.searchSounds);
   useEffect(() => {
-    searchSounds();
+    const defaults: ISearchRequestParams = {
+      fields: ["id", "name", "duration", "type", "previews", "images", "description", "tags", "avg_rating"],
+    };
+    searchSounds(defaults);
   }, []);
   return (
     <Flex as='main' pos='relative' zIndex={0} gap='40px' direction='column'>

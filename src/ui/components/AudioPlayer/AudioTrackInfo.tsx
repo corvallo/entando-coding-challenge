@@ -8,7 +8,7 @@ const AudioTrackInfo: FC = () => {
   return (
     <Flex gap='10px' alignItems='center'>
       <Text fontWeight='300'>Now Playing: </Text>
-      <Text fontWeight='600' minW='150px'>
+      <Text fontWeight='600' minW='200px'>
         {track?.name}
       </Text>
     </Flex>

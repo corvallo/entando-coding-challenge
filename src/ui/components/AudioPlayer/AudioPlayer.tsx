@@ -18,7 +18,6 @@ const AudioPlayer: FC = () => {
       zIndex='100'
       px='10'
       alignItems='center'
-      justifyContent='center'
       gap={{ base: "10px", md: "30px" }}
       direction={{ base: "column", md: "row" }}
     >

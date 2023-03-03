@@ -1,3 +1,4 @@
+import { ISearchRequestParams } from "./search.d";
 export interface ISound {
   id: number;
   url: string;
@@ -20,5 +21,5 @@ export interface ISoundStore {
     next: string | null;
     results: ISound[];
   } | null;
-  searchSounds: () => void;
+  searchSounds: (params: ISearchRequestParams) => void;
 }

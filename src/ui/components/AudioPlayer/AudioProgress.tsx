@@ -15,7 +15,7 @@ const AudioProgress: FC<AudioProgressProps> = ({ progress, duration, onChange })
   return (
     <>
       <Text fontSize={"sm"}>{progress === 0 ? "00:00" : `${progressSec}`}</Text>
-      <Slider value={progress} min={0} max={Math.floor(duration)} colorScheme='blue' onChange={onChange}>
+      <Slider focusThumbOnChange={false} value={progress} min={0} max={duration ? Math.floor(duration) : 1000} colorScheme='blue' onChange={onChange}>
         <SliderTrack>
           <SliderFilledTrack />
         </SliderTrack>

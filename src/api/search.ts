@@ -1,15 +1,12 @@
 import { ISearchRequestParams } from "../@typings/search";
 
-const search = async (params?: ISearchRequestParams) => {
+const search = async (params: ISearchRequestParams) => {
   try {
-    const searchData = await fetch(
-      "https://freesound.org/apiv2/search/text/?query=cannabis-cookie-monster&fields=id,name,duration,type,previews,images,description,tags,avg_rating&page_size=10",
-      {
-        headers: {
-          Authorization: "Token b6jDvGxnW5EGB6BLorvgN5ea1RaoYOSXWzcIreTi",
-        },
-      }
-    );
+    const searchData = await fetch(`${import.meta.env.VITE_FREESOUND_API_SEARCH_ENDPOINT}?${new URLSearchParams(params as string)}`, {
+      headers: {
+        Authorization: `Token ${import.meta.env.VITE_FREESOUND_API_KEY}`,
+      },
+    });
     if (searchData.status === 200) {
       const searchResults = await searchData.json();
       return searchResults;
