@@ -5,24 +5,25 @@ import { BsSoundwave } from "react-icons/bs";
 export interface AudioProgressProps {
   progress: number;
   duration: number;
+  onChange: (value: number) => void;
 }
 
-const AudioProgress: FC<AudioProgressProps> = ({ progress, duration }) => {
-  const totalMs = duration * 1000;
-  const result = new Date(totalMs).toISOString().slice(14, 19);
+const AudioProgress: FC<AudioProgressProps> = ({ progress, duration, onChange }) => {
+  const progressSec = useMemo(() => new Date((progress + 1) * 1000).toISOString().slice(14, 19), [progress]);
+  const totalSec = useMemo(() => new Date(duration * 1000).toISOString().slice(14, 19), [duration]);
 
   return (
     <>
-      <Text fontSize={"sm"}>00:00</Text>
-      <Slider value={progress} min={0} max={Math.floor(duration)} colorScheme='blue'>
+      <Text fontSize={"sm"}>{progress === 0 ? "00:00" : `${progressSec}`}</Text>
+      <Slider value={progress} min={0} max={Math.floor(duration)} colorScheme='blue' onChange={onChange}>
         <SliderTrack>
           <SliderFilledTrack />
         </SliderTrack>
-        <SliderThumb boxSize={6}>
+        <SliderThumb boxSize={6} cursor='pointer'>
           <Box color='blue.500' as={BsSoundwave} />
         </SliderThumb>
       </Slider>
-      <Text fontSize={"sm"}>{duration === 0 ? "00:00" : `${result}`}</Text>
+      <Text fontSize={"sm"}>{duration === 0 ? "00:00" : `${totalSec}`}</Text>
     </>
   );
 };

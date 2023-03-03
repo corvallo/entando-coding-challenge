@@ -1,5 +1,5 @@
 import { Flex, Text } from "@chakra-ui/react";
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, useCallback, useEffect, useRef, useState } from "react";
 import usePlayerStore from "../../../store/playerStore";
 import AudioProgress from "./AudioProgress";
 
@@ -26,6 +26,7 @@ const AudioTrack: FC = () => {
       }
 
       audioRef.current = new Audio(track?.previews[Object.keys(track.previews)[0]]);
+
       audioRef.current.play();
       audioRef.current.onended = () => stop();
     }
@@ -34,11 +35,12 @@ const AudioTrack: FC = () => {
     if (audioRef.current) {
       switch (status) {
         case "play":
-          audioRef.current.play();
           startTimer();
+          audioRef.current.play();
           return;
         case "pause":
           audioRef.current.pause();
+          clearInterval(intervalRef.current);
           return;
         case "stop":
           audioRef.current.pause();
@@ -50,10 +52,21 @@ const AudioTrack: FC = () => {
     }
   }, [status]);
 
+  const onChangeProgess = useCallback(
+    (v: number) => {
+      audioRef.current!.pause();
+      audioRef.current!.currentTime = v;
+      startTimer();
+      setProgress(v);
+      audioRef.current!.play();
+    },
+    [progress]
+  );
+
   return (
     <>
       <Flex flex='0.3' gap='20px' alignItems='center' w={{ base: "100%" }}>
-        <AudioProgress progress={progress} duration={track?.duration || 0} />
+        <AudioProgress progress={progress} duration={track?.duration || 0} onChange={onChangeProgess} />
       </Flex>
     </>
   );
