@@ -13,8 +13,9 @@ const SearchResults: FC = () => {
   const count = useSoundsStore((s) => s.count);
   const page = useSoundsStore((s) => s.page);
   const resultsRange = useMemo(() => {
-    const start = 1;
-    const end = DEFAULT_PAGE_SIZE;
+    const start = page === 1 ? 1 : (page - 1) * DEFAULT_PAGE_SIZE + (page - 1);
+    const end = page === 1 ? DEFAULT_PAGE_SIZE : start - (page - 1) + DEFAULT_PAGE_SIZE;
+    return `${start} - ${end}`;
   }, [page, sounds]);
   return (
     <Flex w={{ base: "90%", md: "80%", lg: "70%" }} m='0 auto' pos='relative' justifyContent='center' zIndex={0}>
@@ -25,7 +26,7 @@ const SearchResults: FC = () => {
           {sounds.length > 0 && (
             <Flex justifyContent='space-between'>
               <Text>
-                Showing {DEFAULT_PAGE_SIZE} of {count} results
+                Showing {resultsRange} of {count} results
               </Text>
             </Flex>
           )}
@@ -38,7 +39,7 @@ const SearchResults: FC = () => {
             columns={1}
             maxH={{ base: "calc(100vh - 60px - 60px - 390px )", md: "calc(100vh - 60px - 60px - 340px )" }}
           >
-            {sounds.length > 0 ? sounds.map((sound: ISound) => <SoundCard key={sound.id} sound={sound} />) : <EmptyResults />}
+            {sounds.length > 0 ? sounds.map((sound: ISound, index) => <SoundCard key={sound.id} sound={sound} />) : <EmptyResults />}
           </SimpleGrid>
           {sounds.length > 0 && <Pagination />}
         </Flex>
