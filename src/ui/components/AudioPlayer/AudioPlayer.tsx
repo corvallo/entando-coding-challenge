@@ -20,8 +20,9 @@ const AudioPlayer: FC = () => {
       alignItems='center'
       gap={{ base: "10px", md: "30px" }}
       direction={{ base: "column", md: "row" }}
+      p='10px'
     >
-      <Flex direction='column' gap='5px'>
+      <Flex flex='1' direction='column' gap='5px' justifyContent='center' alignItems='center'>
         <AudioTrackInfo />
         <AudioControls />
       </Flex>

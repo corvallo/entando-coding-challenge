@@ -72,7 +72,7 @@ const AudioTrack: FC = () => {
 
   return (
     <>
-      <Flex flex='1' gap='20px' alignItems='center' w={{ base: "100%" }}>
+      <Flex flex='1' gap='20px' alignItems='center' w={{ base: "100%" }} px='20px'>
         <AudioProgress progress={progress} duration={track?.duration || 0} onChange={onChangeProgess} />
       </Flex>
     </>

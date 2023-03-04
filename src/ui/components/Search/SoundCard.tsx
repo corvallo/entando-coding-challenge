@@ -37,6 +37,9 @@ const SoundCard: FC<SounCardProps> = ({ sound }) => {
           h='100%'
         />
         <SoundPlayButton sound={sound} />
+        <Box bg='blackAlpha.800' pos='absolute' zIndex={100} color='white' bottom='0' right='5px'>
+          <Text fontSize='sm'>{new Date(sound.duration * 1000).toISOString().slice(14, 19)}</Text>
+        </Box>
       </Box>
       <Flex flex='1' direction='column' py='5' pr='5' pl={{ base: 5, md: 0 }} gap='5px' w='100%'>
         <Flex justifyContent='space-between'>

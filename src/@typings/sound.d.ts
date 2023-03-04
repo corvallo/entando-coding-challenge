@@ -13,13 +13,22 @@ export interface ISound {
   duration: number;
 }
 
+export interface ISearchResult {
+  count: number;
+  previous: string | null;
+  next: string | null;
+  results: ISound[];
+}
+
 export interface ISoundStore {
   loading: boolean;
-  searchSoundsResults: {
-    count: number;
-    previous: string | null;
-    next: string | null;
-    results: ISound[];
-  } | null;
+  sounds: ISound[];
+  count: number;
+  page: number;
+  prev: number;
+  next: number;
+  totPages: number;
+  params: ISearchRequestParams;
+  setPage: (p: number) => void;
   searchSounds: (params?: ISearchRequestParams) => void;
 }

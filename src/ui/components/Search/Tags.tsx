@@ -10,7 +10,7 @@ const Tags: FC<TagsProps> = ({ tags }) => {
   const slice = useBreakpointValue({
     base: 2,
     lg: 3,
-    xl: 0,
+    xl: 6,
   });
   const computedTags = useMemo(() => (slice !== 0 ? tags.slice(0, slice) : tags), [slice]);
   return (
