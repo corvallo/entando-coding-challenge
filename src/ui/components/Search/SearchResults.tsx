@@ -22,7 +22,7 @@ const SearchResults: FC = () => {
       {loading ? (
         <Spinner color='blue.500' size='lg' />
       ) : (
-        <Flex direction='column' gap='10px'>
+        <Flex direction='column' gap='10px' w='100%'>
           {sounds.length > 0 && (
             <Flex justifyContent='space-between'>
               <Text>
@@ -33,7 +33,7 @@ const SearchResults: FC = () => {
 
           <SimpleGrid
             overflow='auto'
-            w='100%'
+            w='full'
             gap='30px'
             p='3'
             columns={1}
