@@ -1,5 +1,5 @@
 import { Flex, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
-import { FC } from "react";
+import { FC, useMemo } from "react";
 import { ISound } from "../../../@typings/sound";
 import { DEFAULT_PAGE_SIZE } from "../../../constants/search_fields";
 import useSoundsStore from "../../../store/soundsStore";
@@ -10,8 +10,12 @@ import SoundCard from "./SoundCard";
 const SearchResults: FC = () => {
   const loading = useSoundsStore((s) => s.loading);
   const sounds = useSoundsStore((s) => s.sounds);
-  const totPages = useSoundsStore((s) => s.totPages);
   const count = useSoundsStore((s) => s.count);
+  const page = useSoundsStore((s) => s.page);
+  const resultsRange = useMemo(() => {
+    const start = 1;
+    const end = DEFAULT_PAGE_SIZE;
+  }, [page, sounds]);
   return (
     <Flex w={{ base: "90%", md: "80%", lg: "70%" }} m='0 auto' pos='relative' justifyContent='center' zIndex={0}>
       {loading ? (
