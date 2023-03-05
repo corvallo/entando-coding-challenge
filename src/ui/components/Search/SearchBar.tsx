@@ -15,7 +15,7 @@ const SearchBar: FC = () => {
   return (
     <FormProvider {...methods}>
       <chakra.form w='100%' name='search' onSubmit={methods.handleSubmit(onSubmit)}>
-        <Flex alignItems='center' direction={{ base: "column", md: "row" }} m='0 auto' w={{ base: "90%", md: "80%", lg: "70%" }}>
+        <Flex alignItems='center' m='0 auto' w={{ base: "90%", md: "80%", lg: "70%" }}>
           <SearchInput />
           <SearchSubmit />
         </Flex>

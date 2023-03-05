@@ -16,8 +16,8 @@ const AudioControls: FC = () => {
   return (
     <Flex gap='10px' alignItems='center'>
       <Button
-        w='60px'
-        h='60px'
+        w='40px'
+        h='40px'
         display='flex'
         bg='blue.500'
         color='white'

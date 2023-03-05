@@ -18,13 +18,13 @@ const SearchResults: FC = () => {
     return `${start} - ${end}`;
   }, [page, sounds]);
   return (
-    <Flex w={{ base: "90%", md: "80%", lg: "70%" }} m='0 auto' pos='relative' justifyContent='center' zIndex={0}>
+    <Flex w={{ base: "90%", md: "80%", lg: "70%" }} h='70vh' m='0 auto' pos='relative' justifyContent='center' zIndex={0}>
       {loading ? (
         <Spinner color='blue.500' size='lg' />
       ) : (
         <Flex direction='column' gap='10px' w='100%'>
           {sounds.length > 0 && (
-            <Flex justifyContent='space-between'>
+            <Flex justifyContent='space-between' display={{ base: "none", md: "flex" }}>
               <Text>
                 Showing {resultsRange} of {count} results
               </Text>
@@ -32,12 +32,13 @@ const SearchResults: FC = () => {
           )}
 
           <SimpleGrid
+            id='results'
             overflow='auto'
             w='full'
             gap='30px'
             p='3'
             columns={1}
-            maxH={{ base: "calc(100vh - 60px - 60px - 390px )", md: "calc(100vh - 60px - 60px - 340px )" }}
+            maxH={{ base: "calc(100vh - 9%)", md: "calc(100vh - 60px - 60px - 340px )" }}
           >
             {sounds.length > 0 ? sounds.map((sound: ISound, index) => <SoundCard key={sound.id} sound={sound} />) : <EmptyResults />}
           </SimpleGrid>

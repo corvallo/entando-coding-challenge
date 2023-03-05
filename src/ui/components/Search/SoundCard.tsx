@@ -34,7 +34,7 @@ const SoundCard: FC<SounCardProps> = ({ sound }) => {
           src={sound.images[Object.keys(sound.images)[0]]}
           alt={Object.keys(sound.images)[0]}
           w={{ base: "100%", md: "150px" }}
-          h='100%'
+          h={{ base: "70px", md: "100%" }}
         />
         <SoundPlayButton sound={sound} />
         <Box bg='blackAlpha.800' pos='absolute' zIndex={100} color='white' bottom='0' right='5px'>
@@ -43,7 +43,7 @@ const SoundCard: FC<SounCardProps> = ({ sound }) => {
       </Box>
       <Flex flex='1' direction='column' py='5' pr='5' pl={{ base: 5, md: 0 }} gap='5px' w='100%'>
         <Flex justifyContent='space-between'>
-          <Text fontWeight={600} fontSize='md'>
+          <Text fontWeight={600} noOfLines={[1, 2, 3]} fontSize={{ base: "sm", md: "md" }}>
             {sound.name}
           </Text>
           <Text display={{ base: "none", md: "block" }} fontSize={{ base: "xs", lg: "sm" }}>
