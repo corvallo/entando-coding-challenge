@@ -7,6 +7,7 @@ import AudioTrackInfo from "./AudioTrackInfo";
 const AudioPlayer: FC = () => {
   return (
     <Flex
+      data-testid='player'
       pos='absolute'
       bottom='0'
       bg={useColorModeValue("white", "gray.800")}

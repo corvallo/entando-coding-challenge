@@ -38,7 +38,7 @@ const SearchResults: FC = () => {
             gap='30px'
             p='3'
             columns={1}
-            maxH={{ base: "calc(100vh - 9%)", md: "calc(100vh - 60px - 60px - 340px )" }}
+            maxH={{ base: "calc(100vh - 9%)", md: "calc(100vh - 60px - 60px - 280px )" }}
           >
             {sounds.length > 0 ? sounds.map((sound: ISound, index) => <SoundCard key={sound.id} sound={sound} />) : <EmptyResults />}
           </SimpleGrid>

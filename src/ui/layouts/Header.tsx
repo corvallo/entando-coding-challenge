@@ -10,6 +10,7 @@ const Header: FC = () => {
   const title = useMemo(() => (colorMode === "dark" ? "Switch to light theme" : "Switch to dark theme"), [colorMode]);
   return (
     <Flex
+      data-testid='header'
       as='header'
       h={{ base: "40px", md: "60px" }}
       p='2'

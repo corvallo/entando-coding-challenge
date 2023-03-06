@@ -15,7 +15,7 @@ const Pagination: FC = () => {
         isDisabled={page === 1}
         title='First Page'
         colorScheme='blue'
-        size={{ base: "sm", md: "md" }}
+        size='sm'
         onClick={() => {
           setPage(1);
           searchSounds({ ...params, page: 1 });
@@ -27,7 +27,7 @@ const Pagination: FC = () => {
         isDisabled={page === 1}
         title='Previous Page'
         colorScheme='blue'
-        size={{ base: "sm", md: "md" }}
+        size='sm'
         onClick={() => {
           if (page !== 1) {
             setPage(page - 1);
@@ -44,7 +44,7 @@ const Pagination: FC = () => {
         isDisabled={page === totPages}
         title='Next Page'
         colorScheme='blue'
-        size={{ base: "sm", md: "md" }}
+        size='sm'
         onClick={() => {
           if (page !== totPages) {
             setPage(page + 1);
@@ -58,7 +58,7 @@ const Pagination: FC = () => {
         isDisabled={page === totPages}
         title='Last Page'
         colorScheme='blue'
-        size={{ base: "sm", md: "md" }}
+        size='sm'
         onClick={() => {
           setPage(totPages);
           searchSounds({ ...params, page: totPages });
