@@ -10,7 +10,7 @@ const Content: FC = () => {
     searchSounds();
   }, []);
   return (
-    <Flex as='main' pos='relative' zIndex={0} gap='40px' direction='column'>
+    <Flex data-testid='main' as='main' pos='relative' zIndex={0} gap={{ base: "10px", md: "20px" }} direction='column'>
       <SearchBar />
       <SearchResults />
     </Flex>

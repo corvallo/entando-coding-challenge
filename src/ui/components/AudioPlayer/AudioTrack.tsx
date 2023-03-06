@@ -14,7 +14,7 @@ const AudioTrack: FC = () => {
 
   const startTimer = () => {
     clearInterval(intervalRef.current);
-    intervalRef.current = setInterval(() => {
+    intervalRef.current = window.setInterval(() => {
       setProgress(audioRef.current!.currentTime);
     }, 1000);
   };

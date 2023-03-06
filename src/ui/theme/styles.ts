@@ -5,6 +5,10 @@ const styles = {
     body: {
       fontFamily: "Poppins",
       bg: mode("white", "gray.800")(props),
+      height: "100%",
+    },
+    "#root": {
+      height: "100vh",
     },
   }),
 };

@@ -15,17 +15,19 @@ const Pagination: FC = () => {
         isDisabled={page === 1}
         title='First Page'
         colorScheme='blue'
+        size='sm'
         onClick={() => {
           setPage(1);
           searchSounds({ ...params, page: 1 });
         }}
       >
-        &lt;&lt; First Page
+        &lt;&lt; <Text display={{ base: "none", md: "block" }}>First Page</Text>
       </Button>
       <Button
         isDisabled={page === 1}
         title='Previous Page'
         colorScheme='blue'
+        size='sm'
         onClick={() => {
           if (page !== 1) {
             setPage(page - 1);
@@ -33,15 +35,16 @@ const Pagination: FC = () => {
           }
         }}
       >
-        &lt; Prev
+        &lt; <Text display={{ base: "none", md: "block" }}>Prev</Text>
       </Button>
-      <Text px='5'>
-        Page <b>{page}</b> of <b>{totPages}</b>
+      <Text px='5' fontSize={{ base: "sm", md: "md" }}>
+        <b>{page}</b> of <b>{totPages}</b>
       </Text>
       <Button
         isDisabled={page === totPages}
         title='Next Page'
         colorScheme='blue'
+        size='sm'
         onClick={() => {
           if (page !== totPages) {
             setPage(page + 1);
@@ -49,18 +52,19 @@ const Pagination: FC = () => {
           }
         }}
       >
-        Next &gt;
+        <Text display={{ base: "none", md: "block" }}>Next</Text> &gt;
       </Button>
       <Button
         isDisabled={page === totPages}
         title='Last Page'
         colorScheme='blue'
+        size='sm'
         onClick={() => {
           setPage(totPages);
           searchSounds({ ...params, page: totPages });
         }}
       >
-        Last Page &gt;&gt;
+        <Text display={{ base: "none", md: "block" }}>Last Page</Text> &gt;&gt;
       </Button>
     </HStack>
   );

@@ -10,8 +10,9 @@ const Header: FC = () => {
   const title = useMemo(() => (colorMode === "dark" ? "Switch to light theme" : "Switch to dark theme"), [colorMode]);
   return (
     <Flex
+      data-testid='header'
       as='header'
-      h='60px'
+      h={{ base: "40px", md: "60px" }}
       p='2'
       borderBottomStyle='solid'
       borderBottomWidth='1px'
@@ -21,13 +22,13 @@ const Header: FC = () => {
     >
       <Flex w='150px' alignItems='center'>
         {colorMode === "light" ? (
-          <Image src='./logo.svg' alt='Logo' title='Logo' w='100%' h='40px' />
+          <Image src='./logo.svg' alt='Logo' title='Logo' w='100%' h={{ base: "25px", md: "40px" }} />
         ) : (
-          <Image src='./logo_white.svg' alt='Logo' title='Logo' w='100%' h='40px' />
+          <Image src='./logo_white.svg' alt='Logo' title='Logo' w='100%' h={{ base: "25px", md: "40px" }} />
         )}
       </Flex>
       <Flex flex='1' />
-      <Flex justifyContent='end' alignItems='center'>
+      <Flex justifyContent='end' alignItems='center' h='100%'>
         <IconButton variant='unstyled' aria-label={title} title={title} icon={icon} onClick={toggleColorMode} />
       </Flex>
     </Flex>

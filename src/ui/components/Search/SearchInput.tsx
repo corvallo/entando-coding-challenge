@@ -7,10 +7,10 @@ const SearchInput: FC = () => {
   return (
     <Flex flex='1' alignItems='center' w='100%'>
       <Input
-        borderTopRightRadius={{ base: "6px", md: "none" }}
-        borderBottomLeftRadius={{ base: "none", md: "6px" }}
+        borderTopRightRadius={"none"}
+        borderBottomLeftRadius={"6px"}
         borderBottomRightRadius={"none"}
-        h='60px'
+        h={{ base: "40px", md: "50px" }}
         bg='white'
         color='black'
         placeholder='Search for sounds'
